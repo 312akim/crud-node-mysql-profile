@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import '../css/App.css';
 import LoginModal from './LoginModal';
 import UserHome from './UserHome';
-import UserRequest from './UserRequest';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(true);
