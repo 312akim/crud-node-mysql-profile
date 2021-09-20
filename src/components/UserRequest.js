@@ -7,19 +7,25 @@ function UserRequest(props) {
             <h2>Request Form</h2>
 
             <form onSubmit={console.log('submitted')}>
+
                 <StyledInputContainer>
-                    <label htmlFor="requestType">Request Type</label>
-                    <input type="text" name="requestType" id="requestType" />
+                    <label htmlFor="requestDate">Request Date</label>
+                    <input type="text" name="requestDate" id="requestDate" />
                 </StyledInputContainer>
 
                 <StyledInputContainer>
-                    <label htmlFor="requestDay">Request Day</label>
-                    <input type="text" name="requestDay" id="requestDay" />
+                    <label htmlFor="requestTime">Request Time</label>
+                    <input type="text" name="requestTime" id="requestTime" />
                 </StyledInputContainer>
 
                 <StyledInputContainer>
-                    <label htmlFor="requestFrequency">Request Frequency</label>
-                    <input type="text" name="requestFrequency" id="requestFrequency" />
+                    <label htmlFor="requestPickup">Request Pickup</label>
+                    <input type="text" name="requestPickup" id="requestPickup" />
+                </StyledInputContainer>
+
+                <StyledInputContainer>
+                    <label htmlFor="requestDropOff">Request DropOff</label>
+                    <input type="text" name="requestDropOff" id="requestDropOff" />
                 </StyledInputContainer>
 
                 <StyledInputContainer>
