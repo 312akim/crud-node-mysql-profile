@@ -1,37 +1,51 @@
-import React from 'react';
-import styled from 'styled-components'
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import Axios from 'axios';
+import { useForm } from 'react-hook-form';
 
 function UserRequest(props) {
+    const { register, handleSubmit } = useForm();
+
+    const onSubmitHandler = (data) => {
+        console.log(data);
+        // API Url
+        Axios.post('http://localhost:3001/api/insert', data).then(
+            () => {
+                console.log('successful insert of: ' + data.stringify());
+            }
+        )
+    }
+
     return (
         <div style={styles.wrapper}>
             <h2>Request Form</h2>
-
-            <form onSubmit={console.log('submitted')}>
+            <form onSubmit={handleSubmit(onSubmitHandler)}>
 
                 <StyledInputContainer>
-                    <label htmlFor="requestDate">Request Date</label>
-                    <input type="text" name="requestDate" id="requestDate" />
+                    <label htmlFor="pickupDate">Pickup Date</label>
+                    <input {...register("pickupDate")} type="text" name="pickupDate" id="pickupDate" />
                 </StyledInputContainer>
 
                 <StyledInputContainer>
-                    <label htmlFor="requestTime">Request Time</label>
-                    <input type="text" name="requestTime" id="requestTime" />
+                    <label htmlFor="pickupTime">Pickup Time</label>
+                    <input {...register("pickupTime")} type="text" name="pickupTime" id="pickupTime" />
                 </StyledInputContainer>
 
                 <StyledInputContainer>
-                    <label htmlFor="requestPickup">Request Pickup</label>
-                    <input type="text" name="requestPickup" id="requestPickup" />
+                    <label htmlFor="requestPickup">Pickup Address</label>
+                    <input {...register("requestPickup")} type="text" name="requestPickup" id="requestPickup" />
                 </StyledInputContainer>
 
                 <StyledInputContainer>
-                    <label htmlFor="requestDropOff">Request DropOff</label>
-                    <input type="text" name="requestDropOff" id="requestDropOff" />
+                    <label htmlFor="requestDropOff">Drop Off Address</label>
+                    <input {...register("requestDropOff")} type="text" name="requestDropOff" id="requestDropOff" />
                 </StyledInputContainer>
 
                 <StyledInputContainer>
-                    <label htmlFor="requestComments">Additional Comments</label>
-                    <input type="text" name="requestComments" id="requestComments" />
+                    <label htmlFor="comments">Additional Comments</label>
+                    <input {...register("comments")} type="text" name="comments" id="comments" />
                 </StyledInputContainer>
+
                 <button type='submit'>Send Request</button>
             </form>
         </div>
