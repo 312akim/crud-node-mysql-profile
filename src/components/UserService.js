@@ -1,29 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 function UserSchedule(props) {
     // Shows schedule and services for selected child
     const testScheduleData = [
         {
-            pickupDay: 'Monday',
+            id: 0,
+            pickupDate: '9/19/21',
             pickupTime: 3,
-            pickupLocation: '123 Apple Dr, Seattle',
-            dropOffLocation: '456 Home Dr, Bellevue',
+            requestPickup: '123 Apple Dr, Seattle',
+            requestDropOff: '456 Home Dr, Bellevue',
+            comments: 'Street corner'
         },
         {
-            pickupDay: 'Monday',
+            id: 1,
+            pickupDate: '9/19/21',
             pickupTime: 15,
-            pickupLocation: '456 Home Dr, Bellevue',
-            dropOffLocation: '123 Apple Dr, Seattle',
+            requestPickup: '456 Home Dr, Bellevue',
+            requestDropOff: '123 Apple Dr, Seattle',
+            comments: 'Back door'
         }
     ]
+
+    const [scheduleData, setScheduleData] = useState(testScheduleData);
+
     return (
         <div>
             <h2>
                 Current Schedule for CHILDNAME
             </h2>
             {
-                testScheduleData.map((service) => <ChildService service={service} />)
+                scheduleData.map((service) => <ChildService service={service} key={service.id}/>)
             }
         </div>
     );
@@ -32,10 +39,11 @@ function UserSchedule(props) {
 const ChildService = ({service}) => {
     return (
         <StyledServiceWrapper>
-            {serviceLine('Day:', service.pickupDay)}
+            {serviceLine('Date:', service.pickupDate)}
             {serviceLine('Time:', service.pickupTime)}
-            {serviceLine('Pickup:', service.pickupLocation)}
-            {serviceLine('Drop Off:', service.dropOffLocation)}
+            {serviceLine('Pickup:', service.requestPickup)}
+            {serviceLine('Drop Off:', service.requestDropOff)}
+            {serviceLine('Comments:', service.comments)}
         </StyledServiceWrapper>
     )
 }
@@ -60,6 +68,7 @@ const StyledServiceWrapper = styled.div`
     margin-bottom: 25px;
     padding: 5px;
     border: 2px dotted green;
+    color: purple;
 `
 
 const StyledServiceContainer = styled.div`
