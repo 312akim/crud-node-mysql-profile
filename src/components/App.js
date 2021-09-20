@@ -19,7 +19,7 @@ function App() {
   return (
     <div className="App" style={styles.wrapper}>
       <h1>CRUD APPLICATION</h1>
-      {!loggedIn && <button onClick={clickLoginHandler}>Go to Login</button>}
+      {!loginModal && !loggedIn && <button onClick={clickLoginHandler}>Click to Login</button>}
       
       {!loggedIn && loginModal && <LoginModal loginHandler={loginHandler}/>}
 
