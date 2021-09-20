@@ -51,6 +51,7 @@ const styles = {
     wrapper: {
         display: 'flex',
         flexDirection: 'column',
+        marginBottom: '50px',
     }
 }
 

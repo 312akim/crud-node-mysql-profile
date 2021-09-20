@@ -1,6 +1,6 @@
 import React from 'react';
 
-function LoginModal(props) {
+function LoginModal({loginHandler}) {
     return (
         <div style={styles.wrapper}>
             <h2>Login</h2>
@@ -12,7 +12,7 @@ function LoginModal(props) {
                 <label>Password</label>
                 <input type='password' id='password' />
 
-                <button type='submit'>Login</button>
+                <button onClick={loginHandler}>Login</button>
             </form>
         </div>
     );

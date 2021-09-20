@@ -4,19 +4,24 @@ import UserHome from './UserHome';
 import '../css/App.css'
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [loginModal, setLoginModal] = useState(false);
   
   const clickLoginHandler = () => {
     setLoginModal(!loginModal);
   }
 
+  const loginHandler = (e) => {
+    e.preventDefault();
+    setLoggedIn(!loggedIn);
+  }
+
   return (
     <div className="App" style={styles.wrapper}>
       <h1>CRUD APPLICATION</h1>
-      <button onClick={clickLoginHandler}>Go to Login</button>
+      {!loggedIn && <button onClick={clickLoginHandler}>Go to Login</button>}
       
-      {loginModal && <LoginModal />}
+      {!loggedIn && loginModal && <LoginModal loginHandler={loginHandler}/>}
 
       {loggedIn && <UserHome />}
     </div>
