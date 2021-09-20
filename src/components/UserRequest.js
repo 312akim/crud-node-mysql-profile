@@ -1,19 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Axios from 'axios';
 import { useForm } from 'react-hook-form';
 
-function UserRequest(props) {
+function UserRequest() {
     const { register, handleSubmit } = useForm();
 
     const onSubmitHandler = (data) => {
-        console.log(data);
         // API Url
-        Axios.post('http://localhost:3001/api/insert', data).then(
-            () => {
-                console.log('successful insert of: ' + data.stringify());
-            }
-        )
+        Axios.post('http://localhost:3001/api/insert', data);
     }
 
     return (

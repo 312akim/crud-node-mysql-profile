@@ -1,28 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import Axios from 'axios';
 
-function UserSchedule(props) {
+function UserSchedule() {
     // Shows schedule and services for selected child
-    const testScheduleData = [
-        {
-            id: 0,
-            pickupDate: '9/19/21',
-            pickupTime: 3,
-            requestPickup: '123 Apple Dr, Seattle',
-            requestDropOff: '456 Home Dr, Bellevue',
-            comments: 'Street corner'
-        },
-        {
-            id: 1,
-            pickupDate: '9/19/21',
-            pickupTime: 15,
-            requestPickup: '456 Home Dr, Bellevue',
-            requestDropOff: '123 Apple Dr, Seattle',
-            comments: 'Back door'
-        }
-    ]
-
-    const [scheduleData, setScheduleData] = useState(testScheduleData);
+    const [scheduleData, setScheduleData] = useState([]);
+    useEffect(() => {
+        Axios.get("http://localhost:3001/api/get").then((response) =>{
+            setScheduleData(response.data);
+        })
+    },[scheduleData])
 
     return (
         <div>
